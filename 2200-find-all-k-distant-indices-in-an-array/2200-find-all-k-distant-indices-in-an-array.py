@@ -6,5 +6,5 @@ class Solution:
                 for j in range(i-k,i+k+1):
                     if j>=0 and j<len(nums):
                         if j not in map:
-                            map[j] = 1
+                            map[j] = 0
         return map
