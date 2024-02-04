@@ -13,4 +13,4 @@ class Solution:
                 ans.append(i)
             elif(len(lis)>0 and (lis[0]-i)<=k):
                 ans.append(i)
-        return ans
+        return sorted(ans)
