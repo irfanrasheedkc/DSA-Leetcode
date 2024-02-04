@@ -1,18 +1,16 @@
 class Solution:
     def findKDistantIndices(self, nums: List[int], key: int, k: int) -> List[int]:
-        #Brute force
-        map = {}
-        for i,n in enumerate(nums):
-            if n==key:
-                for j in range(i,i-k-1,-1):
-                    if j>=0:
-                        if j not in map:
-                            map[j] = 1
-                        else:
-                            break
-                for j in range(i+1,i+k+1):
-                    if j<len(nums):
-                        if j not in map:
-                            map[j] = 1
-
-        return sorted(map)
+        lis=deque([])
+        prev_popped=-1
+        for i in range(len(nums)):
+            if(nums[i]==key):
+                lis.append(i)
+        ans=[]
+        for i in range(len(nums)):
+            if(len(lis)>0 and lis[0]<i):
+                prev_popped = lis.popleft()
+            if(prev_popped!=-1 and (i-prev_popped) <=k):
+                ans.append(i)
+            elif(len(lis)>0 and (lis[0]-i)<=k):
+                ans.append(i)
+        return ans
