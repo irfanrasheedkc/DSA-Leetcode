@@ -8,6 +8,5 @@ class Solution:
                 for j in range(i-k,i+k+1):
                     if j>=0 and j<len(nums):
                         if j not in map:
-                            result.append(j)
                             map[j] = 1
-        return result
+        return map
